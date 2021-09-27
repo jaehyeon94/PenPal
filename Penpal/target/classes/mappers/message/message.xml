@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="message">
+
+	
+	<select id="selectSendMessage" resultType="hashmap"
+		parameterType="hashmap">
+    <![CDATA[
+        SELECT * FROM send_message WHERE id = #{id}
+        ORDER BY message_no desc
+        LIMIT #{pageStart}, #{perPageNum}
+    ]]>
+	</select>
+	
+	<select id="selectReceiveMessage" resultType="hashmap"
+		parameterType="hashmap">
+    <![CDATA[
+        SELECT * FROM receive_message WHERE id = #{id}
+        ORDER BY message_no desc
+        LIMIT #{pageStart}, #{perPageNum}
+    ]]>
+	</select>
+
+	<select id="SendMessageCount" resultType="Integer">
+    <![CDATA[
+        SELECT count(*) FROM send_message WHERE id=#{id}
+    ]]>
+	</select>
+	
+	<select id="ReceiveMessageCount" resultType="Integer">
+    <![CDATA[
+        SELECT count(*) FROM receive_message WHERE id=#{id}
+    ]]>
+	</select>
+
+	
+	<insert id="insertSendMessage"
+		parameterType="com.penpal.web.model.dto.MessageDto">
+		INSERT INTO
+		send_message(id,friend_id,friend_name,message_title,message)
+		VALUES
+		(#{id},#{friend_id},#{friend_name},#{message_title},#{message})
+	</insert>
+	
+	<insert id="insertReceiveMessage"
+		parameterType="com.penpal.web.model.dto.MessageDto">
+		INSERT INTO
+		receive_message(id,friend_id,friend_name,message_title,message)
+		VALUES
+		(#{friend_id},#{id},#{friend_name},#{message_title},#{message})
+	</insert>
+	
+	<select id="getSendMessage" resultType="com.penpal.web.model.dto.MessageDto">
+		select * from send_message
+		where message_no = #{message_no}
+	</select>
+	
+	<select id="getReceiveMessage" resultType="com.penpal.web.model.dto.MessageDto">
+		select * from receive_message
+		where message_no = #{message_no}
+	</select>
+	
+	<update id="updateSendCk" 
+		parameterType="Integer">
+
+		update send_message set select_ck = 1
+		where message_no = #{message_no}
+	</update>
+	
+	<update id="updateReceiveCk"
+		parameterType="Integer">
+
+		update receive_message set select_ck = 1
+		where message_no = #{message_no}
+	</update>
+	
+	
+	
+</mapper>

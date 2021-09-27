@@ -1,0 +1,149 @@
+@charset "UTF-8";
+
+#main-menu{		
+	display: inline-block;	
+}
+
+#main-menu a {
+	font-family: "맑은 고딕";
+	font-weight: bold;
+	font-size: 15px;
+	color: #000;
+	text-decoration: none;
+}
+
+#main-menu a:hover {
+	color: #ff6a00;	
+}
+
+#main-menu > h1{
+	display: none;
+}
+
+#main-menu > ul{	
+	overflow: auto;
+}
+
+#main-menu > ul > li{
+	float: left;	
+	padding-left: 24px;	
+}
+
+#main-menu > ul > li:first-child{		
+	padding-left: 0px;
+	background: none;	
+}
+/* === <Desktop Only> ===================================================================== */
+
+/* @media all and (min-width:961px){	 */
+		
+	#header {
+		position: static;
+		display: block;
+		height: 70px;
+		padding: 0px;
+		border-bottom: 1px solid #45a99c;
+	}
+	
+	#header .content-container {
+		display: block;
+		width: 960px;
+		box-sizing: border-box;
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	
+	#header .hamburger-button {
+		display: none;
+	}
+	#header .search-button {
+		display: none;
+	}
+	#header .content-container {
+		text-align: unset;
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		height: inherit;
+	}
+	#header .content-container .logo {
+		display: inline-block;
+		position: absolute;
+		left: 0px;
+		top: 23px;
+	}
+	
+	
+	#header .content-container{
+		position: relative;
+		align-items: center;
+	}
+	
+	.hamburger-button,
+	.search-button,
+	.more-vert-button
+	{
+		display: none;
+	}
+	
+	#logo{	
+		position: absolute;
+		left:0px;
+		top:15px;
+	}
+	
+	/* ----#main-menu--------------------------------------- */
+	
+	#main-menu{			
+		position: absolute;
+		left:150px;
+		top:27px;
+	}
+	
+	
+	/* -----#acount-menu------------------------------- */
+	#acount-menu{
+				
+		position: absolute;
+		right:0px;
+		top:20px;
+	}
+	
+	#acount-menu a{
+		
+		display: inline-block;
+		font-family: "맑은 고딕", "고딕", sans-serif;
+		font-size: 10px;
+		font-weight: bold;	
+		
+		color:#979797;
+		text-decoration: none;
+	}
+	
+	#acount-menu a:hover{
+		text-decoration:underline;
+	}
+	
+	#acount-menu > ul{	
+		overflow: auto;
+	}
+	
+	#acount-menu > ul > li{
+		float:left;
+		padding-left: 9px;
+		background: url("../images/bg-member-menu-sp.png") no-repeat 5px center; 
+	}
+	
+	#acount-menu > ul > li:first-child{	
+		padding-left: 0px;
+		background: none; 
+	}
+	
+	/* ------#member-menu-------------------------------- */
+	
+	#member-menu{
+		position: absolute;
+		right:0px;
+		top:40px;
+	}

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+
+
+
+	<select id="myinfo"
+		resultType="com.penpal.web.model.dto.MemberDto">
+		select * from member left join member_finding on (member.id
+		= member_finding.id)
+		where member.id = #{id} and member.password = #{password};
+	</select>
+	
+	<select id="getMember"
+		resultType="com.penpal.web.model.dto.MemberDto">
+		select * from member left join member_finding on (member.id
+		= member_finding.id) where member.id = #{id};
+	</select>
+
+	<select id="memberlist"
+		resultType="com.penpal.web.model.dto.MemberDto">
+		select (member.id) from member
+		left join member_hobby on (member.id = member_hobby.id)
+		where member.gender = #{gender} and member.nationality = #{nationality} and
+		member.age BETWEEN #{age} AND #{age2} and member_hobby.hobby = #{birth};
+	</select>
+
+
+
+	<select id="idck"
+		resultType="com.penpal.web.model.dto.MemberDto">
+		select * from member where id = #{id}
+	</select>
+
+	<insert id="insertMember"
+		parameterType="com.penpal.web.model.dto.MemberDto">
+		INSERT INTO
+		MEMBER(id,password,name,nationality,gender,age)
+		VALUES
+		(#{id},#{password},#{name},#{nationality},#{gender},#{age})
+	</insert>
+
+	<insert id="insertMemberfinding"
+		parameterType="com.penpal.web.model.dto.MemberDto">
+		INSERT INTO MEMBER_FINDING (id,question,answer) VALUES
+		(#{id},#{question},#{answer})
+	</insert>
+
+	<insert id="insertMemberhobby"
+		parameterType="com.penpal.web.model.dto.MemberHobbyDto">
+		INSERT INTO member_hobby (id,hobby) VALUES
+		(#{id},#{hobby})
+	</insert>
+
+	<select id="getUser"
+		resultType="com.penpal.web.model.dto.MemberDto">
+		select * from member where id = #{id}
+	</select>
+
+	<select id="getHobby" resultType="String">
+		select hobby from member_hobby
+		where id = #{id}
+	</select>
+
+	<update id="upprofile"
+		parameterType="com.penpal.web.model.dto.MemberDto">
+
+		update member set photo = #{photo} where id = #{id}
+	</update>
+
+	<update id="updateMember"
+		parameterType="com.penpal.web.model.dto.MemberDto">
+
+		update member set password = #{password}, nationality = #{nationality} where
+		id = #{id}
+	</update>
+
+	<update id="updateMemberfinding"
+		parameterType="com.penpal.web.model.dto.MemberDto">
+
+		update member_finding set question = #{question}, answer = #{answer} where
+		id = #{id}
+	</update>
+
+	<delete id="deleteHobby" parameterType="String">
+
+		delete from member_hobby
+		where id=#{id}
+
+	</delete>
+
+	<delete id="deletefinding" parameterType="String">
+
+		delete from
+		member_finding where id=#{id}
+
+	</delete>
+
+
+
+</mapper>

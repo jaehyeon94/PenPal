@@ -1,0 +1,98 @@
+@charset "UTF-8";
+
+/* .current button {
+	background: #45a99c;
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+} */
+
+.send {
+	background: #fff;
+	color:  #45a99c;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+}
+
+.receive {
+	background: #45a99c;
+	color: #fff;
+	border: none;
+	position: relative;
+	height: 60px;
+	font-size: 1.6em;
+	padding: 0 2em;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+}
+
+.receive:hover {
+	
+	background: #fff;
+	color:  #45a99c;
+	
+}
+
+.receive:before, .receive:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background:#fff;
+	transition: 400ms ease all;
+}
+
+/* .current button:hover {
+	background: #fff;
+	color: #1AAB8A;
+} */
+
+.receive:after{
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+.receive:hover:before, .receive:hover:after{
+	width: 100%;
+	transition: 800ms ease all;
+}
+	
+
+/* .current button:before, .current button:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #45a99c;
+	transition: 400ms ease all;
+} */
+
+/* .current button:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+
+.current button:hover:before, .current button:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+} */

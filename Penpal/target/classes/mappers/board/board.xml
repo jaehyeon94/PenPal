@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+
+	<select id="board_count"
+		resultType="Integer">
+		select count(*) from board
+	</select>
+
+	<select id="board_list"
+		resultType="com.penpal.web.model.dto.BoardDto">
+		select * from board order by board_no desc 
+		limit #{startRowNum}, #{rowCount}
+	</select>
+	
+	
+	<select id="board_friend_count"
+		resultType="Integer">
+		select count(*) from friend 
+		left join board on (friend.friend_id = board.id) where friend.id = #{id} 
+		
+	</select>
+
+	<select id="board_friend_list"
+		resultType="com.penpal.web.model.dto.BoardDto">
+		
+		select board.board_no, board.id, board.nick, board.content, board.photo, board.profile, board.birth from board
+		left outer join friend on (friend.friend_id = board.id) where friend.id = #{id} 
+		order by board_no desc limit #{startRowNum}, #{rowCount}
+
+	</select>
+	
+	<select id="board_my_count"
+		resultType="Integer">
+		select count(*) from board where id = #{id}
+	</select>
+
+	<select id="board_my_list"
+		resultType="com.penpal.web.model.dto.BoardDto">
+		select * from board where id = #{id} order by board_no desc 
+		limit #{startRowNum}, #{rowCount}
+	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<insert id="insert_board"
+		parameterType="com.penpal.web.model.dto.BoardDto">
+		INSERT INTO
+		board(id,nick,profile,photo,content)
+		VALUES
+		(#{id},#{nick},#{profile},#{photo},#{content})
+	</insert>
+	
+	
+</mapper>

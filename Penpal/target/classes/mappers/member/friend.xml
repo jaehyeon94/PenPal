@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="friend">
+
+
+	<insert id="insertFirend"
+		parameterType="com.penpal.web.model.dto.FriendDto">
+		INSERT INTO
+		FRIEND(id,friend_id)
+		VALUES
+		(#{id},#{friendId})
+	</insert>
+
+	<select id="selectFirend" resultType="com.penpal.web.model.dto.FriendDto">
+		select * from friend
+		where id = #{id} and friend_id =  #{friendId}
+	</select>
+	
+	<select id="selectFollow" resultType="integer">
+		select count(*) from friend where id = #{id}
+	</select>
+	
+	<select id="selectFollower" resultType="integer">
+		select count(*) from friend where friend_id = #{id}
+	</select>
+
+</mapper>
